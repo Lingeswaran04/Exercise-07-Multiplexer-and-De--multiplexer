@@ -47,26 +47,62 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
+1.Start the module using module projname().
+2.Declare the inputs and outputs along with the select lines according to the multiplexer and demultiplexer.
+3.Use wire to assign intermediate outputs.
+4.Use and,or and not gates to get the desired output.
+5.End the module.
+6.Generate RTL realization and timing diagrams.
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: LINGESWARAN K
+RegisterNumber: 212222110022 
+
+
+
+4x1 MULTIPLEXER:
+
+module multiplexer(i0,i1,i2,i3,S0,S1,Y);
+input i0,i1,i2,i3,S0,S1;
+output Y;
+not(S0C,S0);
+nor(S1C,S1);
+wire p,q,r,s,S0C,S1C;
+and(p,S0C,S1C,i0);
+and(q,S0C,S1,i1);
+and(r,S0,S1C,i2);
+and(s,S0,S1,i0);
+or(Y,p,r,s,s);
+endmodule
+
+
+1x4 MULTIPLEXER:
+
+module (i,s0,s1,y0,y1,y2,y3)
+input(i,s0,s1)
+output(y0,y1,y2,y3)
+wire(s0c,s1c)
+not(s0c,s0)
+not(s1c,s1)
+and(y0,i,s0,s0c)
+and(y1,i,s0,s1)
+and(y2,i,s1,s0c)
+and(y3,i,s1,s1c)
+endmodule
 */
 
-
-
-
-
+OUTPUT:
 
 ### RTL LOGIC  
 
+![image](https://user-images.githubusercontent.com/119103865/215309244-ee5f5064-4611-4fd3-ae3a-0ced7ed2c6f5.png)
 
 
+![image](https://user-images.githubusercontent.com/119103865/215309256-3ea5adc0-0060-4874-9dcd-f9c3ac6a7529.png)
 
 
 
@@ -74,15 +110,22 @@ RegisterNumber:
 
 ### TIMING DIGRAMS  
 
+![image](https://user-images.githubusercontent.com/119103865/215309266-14324090-00c8-4612-99bd-09e3d1444e2e.png)
 
+
+![image](https://user-images.githubusercontent.com/119103865/215309270-2191a36d-56bb-44a2-81d0-5ebe14eb64ba.png)
 
 
 
 ### TRUTH TABLE 
 
+![image](https://user-images.githubusercontent.com/119103865/215309281-a13cc5d9-7bb7-4536-bda5-804dba5417b9.png)
 
 
+![image](https://user-images.githubusercontent.com/119103865/215309286-674f20ca-acd7-41cc-a71c-7866578713c6.png)
 
 
 
 ### RESULTS 
+
+Thus,the multiplexer and De-multiplexer are verified using VHDL code.
